@@ -1,4 +1,4 @@
-# EduTrack – Documentation Technique Avancée
+# EduTrack – Mini projet SOA
 
 ## Sommaire
 1. [Présentation du projet](#présentation-du-projet)
@@ -6,16 +6,17 @@
 3. [Description des services](#description-des-services)
 4. [Flux d'inscription à un cours (détail)](#flux-dinscription-à-un-cours-détail)
 5. [Schémas de données et protocoles](#schémas-de-données-et-protocoles)
-6. [Diagrammes Mermaid avancés](#diagrammes-mermaid-avancés)
+6. [Conception](#Conception)
 7. [Sécurité et gestion des accès](#sécurité-et-gestion-des-accès)
 8. [Technologies et outils](#technologies-et-outils)
 9. [Exemples d'exécution via Postman](#exemples-dexécution-via-postman)
+10. [Guide d'installation et d'exécution](#guide-dinstallation-et-dexécution)
 
 ---
 
 ## Présentation du projet
 
-EduTrack est une plateforme de gestion de cours en ligne, conçue selon une architecture microservices. Elle permet :
+EduTrack est un mini projet dévolppé pour l'examen final de la matière SOA. Elle est une plateforme de gestion de cours en ligne, conçue selon une architecture microservices. Elle permet :
 - L'inscription et l'authentification des utilisateurs
 - La gestion des cours
 - L'inscription des utilisateurs aux cours
@@ -192,7 +193,7 @@ erDiagram
 
 ---
 
-## Diagrammes Mermaid avancés
+## Conception
 
 ### Vue d'ensemble des interactions
 ```mermaid
@@ -424,6 +425,83 @@ query { getMyEnrollments { id courseId } }
       }
   }
   ```
+---
+
+## Guide d'installation et d'exécution
+
+### Prérequis
+- Node.js (v14 ou supérieur)
+- MySQL
+- MongoDB
+- PostgreSQL
+- Kafka
+
+### Étapes d'installation
+
+1. **Cloner le repository**
+```bash
+git clone <https://github.com/MedRiadh2001/exam_SOA_eduTrack.git>
+cd exam_SOA_eduTrack
+```
+
+2. **Installation des dépendances pour chaque service**
+```bash
+# API Gateway
+cd api_gateway
+npm install
+
+# User Service
+cd ../userService
+npm install
+
+# Cours Service
+cd ../coursService
+npm install
+
+# Inscription Service
+cd ../inscriptionService
+npm install
+```
+
+3. **Démarrage de Kafka**
+```bash
+# Démarrer Zookeeper
+cd kafka
+bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+# Dans un nouveau terminal, démarrer Kafka
+cd kafka
+bin\windows\kafka-server-start.bat config\server.properties
+
+# Dans un autre terminal, créer le topic nécessaire
+cd kafka
+bin\kafka-topics.sh --create --topic user-enrolled --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+```
+
+4. **Démarrage des services**
+
+```bash
+# Terminal 1 - User Service
+cd userService
+node index.js
+
+# Terminal 2 - Inscription Service
+cd inscriptionService
+node index.js
+
+# Terminal 3 - Cours Service
+cd coursService
+node index.js
+
+# Terminal 4 - API Gateway
+cd api_gateway
+node index.js
+```
+
+4. **Vérification du déploiement**
+- L'API Gateway devrait être accessible sur `http://localhost:4000`
+- Vérifier les logs de chaque service pour s'assurer qu'ils démarrent correctement
+
 ---
 
 ## Auteur
