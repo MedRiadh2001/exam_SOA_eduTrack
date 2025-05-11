@@ -6,7 +6,7 @@
 3. [Description des services](#description-des-services)
 4. [Flux d'inscription à un cours (détail)](#flux-dinscription-à-un-cours-détail)
 5. [Schémas de données et protocoles](#schémas-de-données-et-protocoles)
-6. [Diagrammes Mermaid avancés](#diagrammes-mermaid-avancés)
+6. [Conception](#Conception)
 7. [Sécurité et gestion des accès](#sécurité-et-gestion-des-accès)
 8. [Technologies et outils](#technologies-et-outils)
 9. [Exemples d'exécution via Postman](#exemples-dexécution-via-postman)
@@ -192,7 +192,7 @@ erDiagram
 
 ---
 
-## Diagrammes Mermaid avancés
+## Conception
 
 ### Vue d'ensemble des interactions
 ```mermaid
