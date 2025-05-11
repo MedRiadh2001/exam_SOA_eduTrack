@@ -3,11 +3,9 @@ const protoLoader = require('@grpc/proto-loader');
 const db = require('./db');
 const { produceEnrollmentEvent } = require('./kafka');
 
-// Load proto
 const def = protoLoader.loadSync('../proto/inscription.proto');
 const proto = grpc.loadPackageDefinition(def).enrollment;
 
-// gRPC service
 const server = new grpc.Server();
 
 server.addService(proto.EnrollmentService.service, {
@@ -20,7 +18,7 @@ server.addService(proto.EnrollmentService.service, {
           await produceEnrollmentEvent(userId, courseId);
           callback(null, { message: 'Enrollment successful' });
         } catch (err) {
-          console.error("Error during enrollment:", err); // Ajouté
+          console.error("Error during enrollment:", err);
           callback({
             code: grpc.status.INTERNAL,
             message: 'Enrollment failed',
