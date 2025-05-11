@@ -34,9 +34,8 @@ async function start() {
     if (!token) return null;
   
     try {
-      // Assuming you're using JWT, replace 'your-secret-key' with your actual secret key
       const decoded = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET);
-      return decoded; // Assuming your token payload contains a `user` object
+      return decoded;
     } catch (err) {
       console.error("Token verification failed:", err);
       return null;
@@ -48,8 +47,8 @@ async function start() {
     typeDefs,
     resolvers,
     context: ({ req }) => {
-        // You can extract the user from the request headers or authentication token
-        const user = getUserFromToken(req.headers.authorization); // Replace with actual token parsing logic
+        
+        const user = getUserFromToken(req.headers.authorization);
         return { user };
       },
   });
