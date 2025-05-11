@@ -1,14 +1,12 @@
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
-require('./db'); // Connect MongoDB
+require('./db');
 const Course = require('./models/cours');
 const { startConsumer } = require('./kafkaConsumer');
 
-// Load proto
 const def = protoLoader.loadSync('../proto/cours.proto');
 const courseProto = grpc.loadPackageDefinition(def).course;
 
-// gRPC service
 const server = new grpc.Server();
 
 server.addService(courseProto.CourseService.service, {
