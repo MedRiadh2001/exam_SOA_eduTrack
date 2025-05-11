@@ -1,0 +1,29 @@
+type User {
+  id: ID!
+  email: String!
+}
+
+type Course {
+  id: ID!
+  title: String!
+  description: String
+}
+
+type Enrollment {
+  id: ID!
+  userId: ID!
+  courseId: ID!
+}
+
+type Query {
+  getCourses: [Course!]!
+  getCourse(id: ID!): Course
+  getMyEnrollments: [Enrollment!]!
+}
+
+type Mutation {
+  register(email: String!, password: String!): String!   # returns message
+  login(email: String!, password: String!): String!      # returns token
+  enrollInCourse(courseId: ID!): String!                 # returns message
+  addCourse(title: String!, description: String): Course!
+}
