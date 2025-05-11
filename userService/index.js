@@ -5,11 +5,9 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const db = require('./db');
 
-// Load proto
 const packageDef = protoLoader.loadSync('../proto/user.proto');
 const proto = grpc.loadPackageDefinition(packageDef).user;
 
-// gRPC server setup
 const server = new grpc.Server();
 
 server.addService(proto.UserService.service, {
