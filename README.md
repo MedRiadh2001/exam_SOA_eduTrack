@@ -16,7 +16,7 @@
 
 ## Présentation du projet
 
-EduTrack est un mini projet dévolppé pour l'examen final de la matière SOA. Elle est une plateforme de gestion de cours en ligne, conçue selon une architecture microservices. Elle permet :
+EduTrack est un mini projet dévolppé dans le cadre de l'examen final de la matière SOA. Elle est une plateforme de gestion de cours en ligne, conçue selon une architecture microservices. Elle permet :
 - L'inscription et l'authentification des utilisateurs
 - La gestion des cours
 - L'inscription des utilisateurs aux cours
