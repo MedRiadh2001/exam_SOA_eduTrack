@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package course;
+
+service CourseService {
+  rpc AddCourse (CourseInput) returns (Course);
+  rpc ListCourses (Empty) returns (CourseList);
+  rpc GetCourse (CourseRequest) returns (Course); 
+}
+
+message CourseRequest {
+  string id = 1;
+}
+
+message CourseInput {
+  string title = 1;
+  string description = 2;
+}
+
+message CourseResponse {
+  string message = 1;
+}
+
+message Empty {}
+
+message Course {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message CourseList {
+  repeated Course courses = 1;
+}
