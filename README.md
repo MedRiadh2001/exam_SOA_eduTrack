@@ -440,7 +440,7 @@ query { getMyEnrollments { id courseId } }
 
 1. **Cloner le repository**
 ```bash
-git clone <https://github.com/MedRiadh2001/exam_SOA_eduTrack.git>
+git clone https://github.com/MedRiadh2001/exam_SOA_eduTrack.git
 cd exam_SOA_eduTrack
 ```
 
