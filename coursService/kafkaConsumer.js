@@ -14,7 +14,6 @@ const startConsumer = async () => {
     eachMessage: async ({ topic, partition, message }) => {
       const data = JSON.parse(message.value.toString());
       console.log(`👂 Event received: User ${data.userId} enrolled in Course ${data.courseId}`);
-      // Tu peux déclencher une action ici si nécessaire
     }
   });
 };
