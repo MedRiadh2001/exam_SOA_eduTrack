@@ -498,7 +498,7 @@ cd api_gateway
 node index.js
 ```
 
-4. **Vérification du déploiement**
+5. **Vérification du déploiement**
 - L'API Gateway devrait être accessible sur `http://localhost:4000`
 - Vérifier les logs de chaque service pour s'assurer qu'ils démarrent correctement
 
